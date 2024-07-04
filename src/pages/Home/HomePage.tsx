@@ -3,9 +3,10 @@ import { Container, Heading } from '@chakra-ui/react';
 import { Layout } from '../../component/Layout/index.tsx';
 import { SearchBanner } from '../../component/SearchBanner/SearchBanner.tsx';
 import Images from '../../component/ImagesData/Images.tsx';
-import { fetchData } from '../../Store/imageSlice.ts';
-import { useAppDispatch, useAppSelector } from '../../Store/Store.ts';
+import { fetchData } from '../../store/imageSlice.ts';
+import { useAppDispatch, useAppSelector } from '../../store/store.ts';
 import { useNavigate } from 'react-router-dom';
+import { setModal } from '../../store/modalSlice.ts';
 
 const HomePage: React.FC = () => {
     const data = useAppSelector((state) => state.data.data);
@@ -39,7 +40,7 @@ const HomePage: React.FC = () => {
     };
 
     const openImageModal = (id: number) => {
-        navigate({ search: `?image=${id}` });
+        // navigate({ search: `?image=${id}` });
     };
 
     return (

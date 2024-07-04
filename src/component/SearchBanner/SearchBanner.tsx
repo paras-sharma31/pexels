@@ -3,10 +3,8 @@ import { Box, Container, Input, Text, VStack } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
-import { setSearch } from '../../Store/imageSlice.ts';
+import { setSearch } from '../../store/imageSlice.ts';
 import './search.scss'
-
-
 
 export const SearchBanner: React.FC = () => {
 
@@ -18,11 +16,14 @@ export const SearchBanner: React.FC = () => {
         setInput(e.target.value)
         dispatch(setSearch(e.target.value))
     }
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        navigate(`search/${input}`)
-        console.log(e, "2038423084023842308")
+        if (input) {
+            dispatch(setSearch(input));
+            navigate(`/search?photo=${input}`)
+        }
     }
+
     return (
         <Box className='banner-img' objectFit={'cover'} backgroundPosition={'center'} height={{ xl: '400px' }} display='flex' justifyContent='center' alignItems='center'>
             <VStack>
@@ -35,6 +36,7 @@ export const SearchBanner: React.FC = () => {
                     <form onSubmit={handleSubmit}>
                         <Input type='search' placeholder='search for free photos...'
                             size='lg' bg={'white'} color={'gray'} my='2'
+                            value={input}
                             onChange={searchFilter}
                         />
                     </form>
