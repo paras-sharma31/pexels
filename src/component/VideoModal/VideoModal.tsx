@@ -13,7 +13,7 @@ const VideoModal = ({ videoSrc, downloadImage }) => {
                             <MenuButton
                                 isActive={isOpen}
                                 as={Button}
-                                width="20%"
+                                width={{ xl: "20%", md: '25%' }}
                                 alignSelf="end"
                                 justifyContent="space-between"
                                 top="-20px"
@@ -25,7 +25,7 @@ const VideoModal = ({ videoSrc, downloadImage }) => {
                             >
                                 {isOpen ? 'Free Download' : 'Free Download'}
                             </MenuButton>
-                            <MenuList width="30%" p="10px">
+                            <MenuList width={{ xl: '30%', md: '20%' }} p="10px">
                                 <Heading fontSize="18px" fontWeight={500}>
                                     Choose a size:
                                 </Heading>
@@ -38,7 +38,7 @@ const VideoModal = ({ videoSrc, downloadImage }) => {
                                         display="flex"
                                         justifyContent="space-between"
                                         alignItems="center"
-                                        p="10px"
+                                        p={{ base: 1, sm: 2 }}
                                         borderBottom="1px solid lightgray"
                                         textTransform='capitalize'
                                     >

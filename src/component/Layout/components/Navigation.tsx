@@ -28,7 +28,7 @@ export default function NavBarChakra() {
     ]
 
     return (
-        <Box px={4} position={'sticky'} top={0} zIndex={1} boxShadow='md' p='6' rounded='md' bg='white'>
+        <Box px={4} position={'sticky'} top={0} zIndex={4} boxShadow='md' p='6' rounded='md' bg='white'>
             <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
                 <Menu >
                     <MenuButton

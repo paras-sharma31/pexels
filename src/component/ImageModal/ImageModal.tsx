@@ -11,26 +11,25 @@ const ImageModal = ({ imageSrc, downloadImage }) => {
     console.log(Object.keys(imageSrc), 'srsadfadsfc', imageSrc)
     return (
         <ModalBody pb={6}>
-            <Flex w='full' justifyContent="center" direction="column" _hover={{ '.hover-button': { display: 'block' } }}>
+            <Flex w='full' justifyContent="center" direction="column" >
                 <Menu>
                     {({ isOpen }) => (
                         <>
                             <MenuButton
                                 isActive={isOpen}
                                 as={Button}
-                                rightIcon={<ChevronDownIcon />}
-                                width="20%"
+                                width={{ xl: "20%", md: '25%' }}
                                 alignSelf="end"
                                 justifyContent="space-between"
                                 top="-20px"
                                 right="40px"
                                 position="relative"
                                 zIndex="1"
-                                className="hover-button"
+                                rightIcon={<ChevronDownIcon />}
                             >
                                 {isOpen ? 'Free Download' : 'Free Download'}
                             </MenuButton>
-                            <MenuList width="30%" p="5px">
+                            <MenuList width={{ xl: '30%', md: '20%' }} p="5px">
                                 <Heading fontSize="18px" fontWeight={500}>
                                     Choose a size:
                                 </Heading>
@@ -43,7 +42,7 @@ const ImageModal = ({ imageSrc, downloadImage }) => {
                                         display="flex"
                                         justifyContent="space-between"
                                         alignItems="center"
-                                        p="10px"
+                                        p={{ base: 1, sm: 2 }}
                                         borderBottom="1px solid gray"
                                         textTransform='capitalize'
                                     >
@@ -60,7 +59,7 @@ const ImageModal = ({ imageSrc, downloadImage }) => {
                 {/* <Box h='full' maxH='34rem' w='auto' bg={imageSrc.original} /> */}
                 <Image h='full' maxH='34rem' w='auto' src={imageSrc.original} objectFit='contain' />
             </Flex>
-        </ModalBody>
+        </ModalBody >
 
 
 

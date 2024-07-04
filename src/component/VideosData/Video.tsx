@@ -45,12 +45,12 @@ const Video: React.FC<VideoProps> = ({ video = [], hasMore, handleLoadMore, cate
                         <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" size="md" />
                     </div>
                 }
-                style={{ padding: '3rem 1.5rem' }}
+                style={{ padding: '3rem  1.5rem' }}
                 scrollThreshold={0.9}
             >
 
                 <ResponsiveMasonry
-                    columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
+                    columnsCountBreakPoints={{ 350: 2, 750: 3, 900: 3 }}
                 >
                     <Masonry>
                         {
@@ -75,15 +75,16 @@ const Video: React.FC<VideoProps> = ({ video = [], hasMore, handleLoadMore, cate
                                     <Box position="relative">
                                         <Container display='none' className="hover-button">
                                             <Button
+                                                background='rgba(0, 0, 0, .64)'
+                                                borderRadius='50px'
                                                 position="absolute"
-                                                bottom="20px"
-                                                right="40px"
+                                                bottom={{ base: 2 }}
+                                                right={{ base: 4, }}
                                                 variant="solid"
                                                 onClick={() => downloadImage(videos.video_files[0].link, `video-${index + 1}.mp4`)}
                                                 _hover={{ cursor: 'pointer', bg: '#05a081' }}
                                             >
                                                 <MdOutlineFileDownload className="download-icon" />
-                                                Download
                                             </Button>
                                         </Container>
                                     </Box>

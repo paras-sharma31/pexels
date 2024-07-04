@@ -6,7 +6,7 @@ import { Spinner } from '@chakra-ui/react'
 import ModalBox from '../Modal/Modal.tsx';
 import { ModalType, setModal } from '../../store/modalSlice.ts';
 import { useAppDispatch } from '../../store/store.ts';
-import Masonry from "react-responsive-masonry"
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 
 interface ImagesProps {
     openImageModal: (id: number) => void;
@@ -25,52 +25,60 @@ const Images: React.FC<ImagesProps> = ({ openImageModal, fetchMoreData, download
     return (
         <section>
             <ModalBox imageSrc={imageSrc} />
-            <InfiniteScroll
-                dataLength={search ? imageCategoryData.length : data.length} // This is an important field to render the next data
-                next={search ? loadMore || fetchMoreData : fetchMoreData}
-                hasMore={hasMore}
-                loader={
-                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
-                        <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" size="md" />
-                    </div>
-                }
-                style={{ padding: '4rem 1.5rem' }}
-                scrollThreshold={0.9}
+            <Box>
+                <InfiniteScroll
+                    dataLength={search ? imageCategoryData.length : data.length} // This is an important field to render the next data
+                    next={search ? loadMore || fetchMoreData : fetchMoreData}
+                    hasMore={hasMore}
+                    loader={
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                            <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" size="md" />
+                        </div>
+                    }
+                    style={{ padding: '3rem  1.5rem' }}
+                    scrollThreshold={0.9}
 
-            >
-                <Masonry>
-                    {(search ? imageCategoryData : data).map((image, index) => (
-                        <Container key={image.id} position='relative' _hover={{ '.hover-button': { display: 'block' } }} padding='1rem'>
-                            <Image src={image.src.large2x} alt={image.photographer} onClick={() => {
-                                openImageModal(image.id)
-                                dispatch(setModal({
-                                    modalType: ModalType.Image, // Changed to camelCase
-                                    modalSize: '6xl',  // Changed to camelCase
-                                    id: image.id,
-                                }));
-                                console.log(image, "023840328402")
-                                setImageSc(image.src)
+                >
+                    <ResponsiveMasonry
+                        columnsCountBreakPoints={{ 350: 2, 750: 3, 900: 3 }}
+                    >
+                        <Masonry>
+                            {(search ? imageCategoryData : data).map((image, index) => (
+                                <Container key={image.id} position='relative' _hover={{ '.hover-button': { display: 'block' } }} padding='1rem'>
+                                    <Image src={image.src.large2x} alt={image.photographer} onClick={() => {
+                                        openImageModal(image.id)
+                                        dispatch(setModal({
+                                            modalType: ModalType.Image, // Changed to camelCase
+                                            modalSize: '6xl',  // Changed to camelCase
+                                            id: image.id,
+                                        }));
+                                        console.log(image, "023840328402")
+                                        setImageSc(image.src)
 
-                            }} />
-                            <Box position="relative">
-                                <Container display='none' className="hover-button">
-                                    <Button
-                                        position="absolute"
-                                        bottom="20px"
-                                        right="20px"
-                                        onClick={() => downloadImage(image.src.portrait, `photo-${index + 1}.jpg`)}
-                                        variant="solid"
-                                        _hover={{ cursor: 'pointer', bg: '#05a081' }}
-                                    >
-                                        <MdOutlineFileDownload className="download-icon" />
-                                        Download
-                                    </Button>
+                                    }} />
+                                    <Box position="relative">
+                                        <Container display='none' className="hover-button">
+                                            <Button
+                                                background='rgba(0, 0, 0, .64)'
+                                                borderRadius='50px'
+                                                position="absolute"
+                                                bottom={{ base: 2 }}
+                                                right={{ base: 3 }}
+                                                onClick={() => downloadImage(image.src.portrait, `photo-${index + 1}.jpg`)}
+                                                variant="solid"
+                                                _hover={{ cursor: 'pointer', bg: '#05a081' }}
+                                            >
+                                                <MdOutlineFileDownload className="download-icon" />
+                                            </Button>
+                                        </Container>
+                                    </Box>
                                 </Container>
-                            </Box>
-                        </Container>
-                    ))}
-                </Masonry>
-            </InfiniteScroll>
+                            ))}
+                        </Masonry>
+                    </ResponsiveMasonry>
+                </InfiniteScroll>
+            </Box>
+
         </section>
     );
 };
