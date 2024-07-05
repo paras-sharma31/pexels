@@ -1,17 +1,39 @@
 {
-    "extends": "./configs/base",
     "compilerOptions": {
         "target": "ES6",
         "module": "commonjs",
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true
+        "forceConsistentCasingInFileNames": true,
+        "jsx": "react", // Specify JSX code generation
+        "moduleResolution": "node", // Specify module resolution strategy
+        "resolveJsonModule": true, // Allows importing JSON modules
+        "isolatedModules": true, // Ensures each file can be compiled in isolation
+        "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
+        "baseUrl": ".", // Base directory to resolve non-relative module names
+        "paths": { // Define module resolution paths
+            "@components/*": [
+                "src/components/*"
+            ],
+            "@utils/*": [
+                "src/utils/*"
+            ]
+        },
+        "typeRoots": [
+            "./node_modules/@types"
+        ], // Specify root folders for type declarations
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ] // Specify library files to be included in the compilation
     },
     "include": [
-        "main.ts",
-        "supplemental.ts",
-        "src/**/*",
-        "tests/**/*"
+        "src"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
     ]
 }
