@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
 import imageSlice from './imageSlice.ts'
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import videoSlice from './videoSlice.ts';
 import modalSlice from './modalSlice.ts';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
 export const store = configureStore({
     reducer: {

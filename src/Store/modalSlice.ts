@@ -8,13 +8,13 @@ export enum ModalType {
 
 interface ModalSlice {
     modalType?: ModalType,
-    modalSize?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '4xl' | 'full',
+    modalSize?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '6xl' | 'full',
     id: number | null,
 }
 
 const initialState: ModalSlice = {
     modalType: undefined,
-    modalSize: '4xl',
+    modalSize: '6xl',
     id: null,
 }
 
