@@ -4,7 +4,7 @@ import './index.scss';
 import App from './App.tsx';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { Provider } from 'react-redux';
-import { store } from './store/store.ts';
+import { store } from './store/store';
 const theme = extendTheme({
     components: {
         Button: {

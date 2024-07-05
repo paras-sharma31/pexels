@@ -33,7 +33,6 @@ const Video: React.FC<VideoProps> = ({ video = [], hasMore, handleLoadMore, cate
     const [videoUrl, setVideoUrl] = useState<Array>([])
     const dispatch = useAppDispatch()
 
-
     return (
         <section>
             <CommonModal src={videoUrl} />
