@@ -10,7 +10,7 @@ import {
 import { closeModal, getModalState, ModalType } from '../../store/modalSlice.ts';
 import VideoCard from '../VideoCard/VideoCard.tsx';
 import ImageCard from '../ImageCard/ImageCard.tsx';
-import { useAppDispatch, useAppSelector } from '../../store/store';
+import { useAppDispatch, useAppSelector } from '../../store/store.ts';
 
 const CommonModal = ({ imageSrc, src }) => {
     const { onClose } = useDisclosure();

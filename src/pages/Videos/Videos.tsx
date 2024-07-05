@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store/store'
+import { useAppDispatch, useAppSelector } from '../../store/store.ts'
 import { Layout } from '../../component/Layout/index.tsx';
 import { fetchPopularVideos } from '../../store/videoSlice.ts';
 import Video from '../../component/VideosData/Video.tsx';
