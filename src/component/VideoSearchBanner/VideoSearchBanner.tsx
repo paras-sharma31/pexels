@@ -1,5 +1,5 @@
 import { Box, Container, Input, Text, VStack } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setSearch } from '../../store/videoSlice.ts';
@@ -7,22 +7,19 @@ import { setSearch } from '../../store/videoSlice.ts';
 const VideoSearchBanner: React.FC = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [searchValue, setSearchValue] = useState('');
-
-    const searchFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchValue(e.target.value);
-    };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (searchValue) {
-            dispatch(setSearch(searchValue));
-            navigate(`/videos?video=${searchValue}`);
+        const form = e.target;
+        const formData = new FormData(form)
+        const search = formData.get('search')
+        if (search) {
+            dispatch(setSearch(search));
+            navigate(`/videos?video=${search}`);
         }
     };
-
     return (
-        <Box position="relative" width="100%" height="100vh" overflow="hidden">
+        <Box position="relative" width="100%" height="80vh" overflow="hidden">
             <Box
                 as='video'
                 src='https://static.pexels.com/lib/videos/free-videos.mp4'
@@ -70,8 +67,7 @@ const VideoSearchBanner: React.FC = () => {
                             bg='white'
                             color='gray'
                             my='2'
-                            value={searchValue}
-                            onChange={searchFilter}
+                            name='search'
                         />
                     </form>
                 </Container>

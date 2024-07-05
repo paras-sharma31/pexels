@@ -1,12 +1,14 @@
-import { ChevronDownIcon } from '@chakra-ui/icons'
-import { Box, Button, Flex, Heading, Menu, MenuButton, MenuList, ModalBody, Text, } from '@chakra-ui/react'
-import React from 'react'
-import { MdOutlineFileDownload } from 'react-icons/md'
-const VideoModal = ({ videoSrc, downloadImage }) => {
-    console.log(videoSrc, 'videoSrc')
+import React from 'react';
+import {
+    Button, Flex, Heading, Image, Menu, MenuButton, MenuList, ModalBody, Text,
+} from '@chakra-ui/react';
+import { ChevronDownIcon } from '@chakra-ui/icons';
+import { MdOutlineFileDownload } from 'react-icons/md';
+
+const ImageCard = ({ imageSrc, downloadImage }) => {
     return (
         <ModalBody pb={6}>
-            <Flex w='full' justifyContent="center" direction="column" >
+            <Flex w="full" justifyContent="center" direction="column">
                 <Menu>
                     {({ isOpen }) => (
                         <>
@@ -20,18 +22,17 @@ const VideoModal = ({ videoSrc, downloadImage }) => {
                                 right="40px"
                                 position="relative"
                                 zIndex="1"
-                                className="hover-button"
                                 rightIcon={<ChevronDownIcon />}
                             >
-                                {isOpen ? 'Free Download' : 'Free Download'}
+                                Free Download
                             </MenuButton>
-                            <MenuList width={{ xl: '30%', md: '20%' }} p="10px">
+                            <MenuList width={{ xl: '30%', md: '20%' }} p="5px">
                                 <Heading fontSize="18px" fontWeight={500}>
                                     Choose a size:
                                 </Heading>
-                                {Object.keys(videoSrc)?.map((item) => {
-                                    console.log(videoSrc[item], 'item')
-                                    return (<Text
+                                {Object.keys(imageSrc).map((item, index) => (
+                                    <Text
+                                        key={index}
                                         fontSize="18px"
                                         fontWeight={700}
                                         color="gray"
@@ -39,30 +40,23 @@ const VideoModal = ({ videoSrc, downloadImage }) => {
                                         justifyContent="space-between"
                                         alignItems="center"
                                         p={{ base: 1, sm: 2 }}
-                                        borderBottom="1px solid lightgray"
-                                        textTransform='capitalize'
+                                        borderBottom="1px solid gray"
+                                        textTransform="capitalize"
                                     >
-                                        {videoSrc[item].width}p
-                                        <Button onClick={() => downloadImage(videoSrc[item], `video.mp4`)}>
+                                        {item}
+                                        <Button onClick={() => downloadImage(imageSrc[item], `photo-${item}.jpg`)}>
                                             <MdOutlineFileDownload />
                                         </Button>
-                                    </Text>)
-                                })}
+                                    </Text>
+                                ))}
                             </MenuList>
                         </>
                     )}
                 </Menu>
-                <Box h='full' maxH='34rem' w='auto' as='video' src={videoSrc[1].link} controls autoPlay loop muted />
+                <Image h="full" maxH="34rem" w="auto" src={imageSrc.original} objectFit="contain" />
             </Flex>
         </ModalBody>
+    );
+};
 
-
-
-
-
-
-
-    )
-}
-
-export default VideoModal
+export default ImageCard;

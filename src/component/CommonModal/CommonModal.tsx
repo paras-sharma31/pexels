@@ -1,4 +1,4 @@
-import React, { useEffect, } from 'react';
+import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/store.ts';
 import {
     Modal,
@@ -7,28 +7,15 @@ import {
     ModalHeader,
     ModalOverlay,
     useDisclosure,
-
 } from '@chakra-ui/react';
-
 import { closeModal, getModalState, ModalType } from '../../store/modalSlice.ts';
-import VideoModal from '../VideoModal/VideoModal.tsx';
-import ImageModal from '../ImageModal/ImageModal.tsx';
+import VideoCard from '../VideoCard/VideoCard.tsx';
+import ImageCard from '../ImageCard/ImageCard.tsx';
 
-const ModalBox = ({ imageSrc, src }) => {
-    const { isOpen, onOpen, onClose } = useDisclosure();
+const CommonModal = ({ imageSrc, src }) => {
+    const { onClose } = useDisclosure();
     const dispatch = useAppDispatch();
     const modalState = useAppSelector(getModalState);
-    console.log(modalState, 'modalState')
-    console.log(modalState.modalType, 'images')
-    console.log(modalState.modalType, 'type')
-
-    useEffect(() => {
-        if (modalState.modalType) {
-            onOpen()
-        } else {
-            onClose();
-        }
-    }, [modalState.modalType, onOpen])
 
     const handleClose = () => {
         onClose();
@@ -46,21 +33,20 @@ const ModalBox = ({ imageSrc, src }) => {
         document.body.removeChild(link);
         URL.revokeObjectURL(link.href); // Clean up after download
     }
-    console.log(src, 'src')
 
     const renderModalContent = () => {
         switch (modalState.modalType) {
             case ModalType.Video:
-                return <VideoModal videoSrc={src} downloadImage={downloadImage} />;
+                return <VideoCard videoSrc={src} downloadImage={downloadImage} />;
             case ModalType.Image:
-                return <ImageModal imageSrc={imageSrc} downloadImage={downloadImage} />;
+                return <ImageCard imageSrc={imageSrc} downloadImage={downloadImage} />;
             default:
                 return null;
         }
     };
 
     return (
-        <Modal closeOnOverlayClick={false} size={modalState.modalSize} isOpen={isOpen} preserveScrollBarGap isCentered onClose={handleClose}>
+        <Modal closeOnOverlayClick={false} size={modalState.modalSize} isOpen={modalState.modalType} preserveScrollBarGap isCentered onClose={handleClose}>
             <ModalOverlay />
             <ModalContent>
                 <ModalHeader>{modalState.modalType === ModalType.Image ? 'Image' : 'Video'}</ModalHeader>
@@ -71,4 +57,4 @@ const ModalBox = ({ imageSrc, src }) => {
     );
 };
 
-export default ModalBox;
+export default CommonModal;

@@ -4,8 +4,8 @@ import { MdOutlineFileDownload } from 'react-icons/md';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useAppDispatch } from '../../store/store.ts';
 import { ModalType, setModal } from '../../store/modalSlice.ts';
-import ModalBox from '../Modal/Modal.tsx';
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
+import CommonModal from '../CommonModal/CommonModal.tsx';
 
 
 interface VideoFile {
@@ -32,10 +32,11 @@ interface VideoProps {
 const Video: React.FC<VideoProps> = ({ video = [], hasMore, handleLoadMore, categoryVideos = [], search, fetchMoreData, openImageModal, downloadImage }) => {
     const [videoUrl, setVideoUrl] = useState<Array>([])
     const dispatch = useAppDispatch()
-    console.log(video, 'video')
+
+
     return (
         <section>
-            <ModalBox src={videoUrl} />
+            <CommonModal src={videoUrl} />
             <InfiniteScroll
                 dataLength={search ? categoryVideos.length : video.length}
                 next={search ? handleLoadMore || fetchMoreData : fetchMoreData}
@@ -45,6 +46,7 @@ const Video: React.FC<VideoProps> = ({ video = [], hasMore, handleLoadMore, cate
                         <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" size="md" />
                     </div>
                 }
+                // 3rem  1.5rem'
                 style={{ padding: '3rem  1.5rem' }}
                 scrollThreshold={0.9}
             >
@@ -58,8 +60,11 @@ const Video: React.FC<VideoProps> = ({ video = [], hasMore, handleLoadMore, cate
                                 <Container key={index} position='relative' _hover={{ '.hover-button': { display: 'block' } }} className="video-container" padding='1rem'>
                                     <video
                                         src={videos.image}
+                                        autoPlay
+                                        loop
+                                        muted
                                         poster={videos.image}
-                                        className="video-item"
+
                                         onClick={() => {
                                             openImageModal(videos.video_files[0].id);
                                             setVideoUrl(videos.video_files);

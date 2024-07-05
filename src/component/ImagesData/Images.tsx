@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import { MdOutlineFileDownload } from 'react-icons/md';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Spinner } from '@chakra-ui/react'
-import ModalBox from '../Modal/Modal.tsx';
 import { ModalType, setModal } from '../../store/modalSlice.ts';
 import { useAppDispatch } from '../../store/store.ts';
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
+import CommonModal from '../CommonModal/CommonModal.tsx';
 
 interface ImagesProps {
     openImageModal: (id: number) => void;
@@ -24,7 +24,7 @@ const Images: React.FC<ImagesProps> = ({ openImageModal, fetchMoreData, download
     const dispatch = useAppDispatch()
     return (
         <section>
-            <ModalBox imageSrc={imageSrc} />
+            <CommonModal imageSrc={imageSrc} />
             <Box>
                 <InfiniteScroll
                     dataLength={search ? imageCategoryData.length : data.length} // This is an important field to render the next data
@@ -52,7 +52,6 @@ const Images: React.FC<ImagesProps> = ({ openImageModal, fetchMoreData, download
                                             modalSize: '6xl',  // Changed to camelCase
                                             id: image.id,
                                         }));
-                                        console.log(image, "023840328402")
                                         setImageSc(image.src)
 
                                     }} />

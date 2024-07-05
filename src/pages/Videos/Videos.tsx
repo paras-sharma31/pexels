@@ -3,7 +3,8 @@ import { useAppDispatch, useAppSelector } from '../../store/store.ts'
 import { Layout } from '../../component/Layout/index.tsx';
 import { fetchPopularVideos } from '../../store/videoSlice.ts';
 import Video from '../../component/VideosData/Video.tsx';
-import VideoSerchBanner from '../../component/VideoSearchBanner/VideoSerchBanner.tsx';
+import VideoSearchBanner from '../../component/VideoSearchBanner/VideoSearchBanner.tsx';
+import { Container, Heading } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 
 const Videos: React.FC = () => {
@@ -39,13 +40,18 @@ const Videos: React.FC = () => {
     };
 
     const openImageModal = (id: number) => {
-        // navigate({ search: `?video=${id}` });
+        navigate({ search: `?video=${id}` });
     };
 
 
     return (
         <Layout>
-            <VideoSerchBanner />
+            <VideoSearchBanner />
+            <Container>
+                <Heading textAlign="center" fontSize="50px" p="20px" my="20px">
+                    Free Stock Videos
+                </Heading>
+            </Container>
             <Video
                 video={video}
                 hasMore={hasMore}

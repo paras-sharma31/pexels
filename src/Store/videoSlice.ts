@@ -47,7 +47,6 @@ export const fetchPopularVideos = createAsyncThunk('videos/fetchPopularVideos', 
         },
     });
     const result = await response.json();
-    console.log(result, 'result')
     return { videos: result.videos, page };
 });
 
@@ -136,8 +135,6 @@ const videoSlice = createSlice({
                 state.loading = false;
                 state.videoModal = [action.payload];
             })
-
-
     },
 });
 
