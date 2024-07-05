@@ -2,7 +2,7 @@ import { Box, Button, Container, Grid, Spinner } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { MdOutlineFileDownload } from 'react-icons/md';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useAppDispatch } from '../../store/store.ts';
+import { useAppDispatch } from '../../store/store';
 import { ModalType, setModal } from '../../store/modalSlice.ts';
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 import CommonModal from '../CommonModal/CommonModal.tsx';

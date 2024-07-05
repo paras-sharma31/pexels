@@ -4,7 +4,7 @@ import { Layout } from '../../component/Layout/index.tsx';
 import { SearchBanner } from '../../component/SearchBanner/SearchBanner.tsx';
 import Images from '../../component/ImagesData/Images.tsx';
 import { fetchData } from '../../store/imageSlice.ts';
-import { useAppDispatch, useAppSelector } from '../../store/store.ts';
+import { useAppDispatch, useAppSelector } from '../../store/store';
 import { useNavigate } from 'react-router-dom';
 
 const HomePage: React.FC = () => {

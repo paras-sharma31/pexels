@@ -4,7 +4,7 @@ import { MdOutlineFileDownload } from 'react-icons/md';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Spinner } from '@chakra-ui/react';
 import { ModalType, setModal } from '../../store/modalSlice.ts';
-import { useAppDispatch } from '../../store/store.ts';
+import { useAppDispatch } from '../../store/store';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import CommonModal from '../CommonModal/CommonModal.tsx';
 

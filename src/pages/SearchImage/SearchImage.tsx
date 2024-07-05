@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Container, Heading, Box } from '@chakra-ui/react';
 import { ImagesSlice, searchData, setSearch } from '../../store/imageSlice.ts';
 import { Layout } from '../../component/Layout/index.tsx';
-import { useAppDispatch, useAppSelector } from '../../store/store.ts';
+import { useAppDispatch, useAppSelector } from '../../store/store';
 import Images from '../../component/ImagesData/Images.tsx';
 import { useLocation, useNavigate } from 'react-router-dom';
 
