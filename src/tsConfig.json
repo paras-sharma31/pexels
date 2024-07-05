@@ -6,13 +6,13 @@
         "esModuleInterop": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
-        "jsx": "react", // Specify JSX code generation
-        "moduleResolution": "node", // Specify module resolution strategy
-        "resolveJsonModule": true, // Allows importing JSON modules
-        "isolatedModules": true, // Ensures each file can be compiled in isolation
-        "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
-        "baseUrl": ".", // Base directory to resolve non-relative module names
-        "paths": { // Define module resolution paths
+        "jsx": "react",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "paths": {
             "@components/*": [
                 "src/components/*"
             ],
@@ -22,12 +22,12 @@
         },
         "typeRoots": [
             "./node_modules/@types"
-        ], // Specify root folders for type declarations
+        ],
         "lib": [
             "dom",
             "dom.iterable",
             "esnext"
-        ] // Specify library files to be included in the compilation
+        ]
     },
     "include": [
         "src"
