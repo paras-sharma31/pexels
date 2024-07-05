@@ -4,7 +4,7 @@ import './index.scss';
 import App from './App.tsx';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { Provider } from 'react-redux';
-import { Store } from './Store/Store.ts';
+import { store } from './store/store.ts';
 const theme = extendTheme({
     components: {
         Button: {
@@ -43,6 +43,7 @@ const theme = extendTheme({
             }
         }
     }
+    ,
 }
 )
 
@@ -51,7 +52,7 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
     <ChakraProvider theme={theme}>
-        <Provider store={Store}>
+        <Provider store={store} >
             <App />
         </Provider>
     </ChakraProvider>

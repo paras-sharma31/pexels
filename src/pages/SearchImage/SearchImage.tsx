@@ -1,19 +1,23 @@
 import React, { useEffect } from 'react';
 import { Container, Heading, Box } from '@chakra-ui/react';
-import { ImagesSlice, searchData } from '../Store/imageSlice.ts';
-import { Layout } from '../component/Layout/index.tsx';
-import { useAppDispatch, useAppSelector } from '../Store/Store.ts';
-import Images from '../component/ImagesData/Images.tsx';
-import { useNavigate } from 'react-router-dom';
+import { ImagesSlice, searchData, setSearch } from '../../store/imageSlice.ts';
+import { Layout } from '../../component/Layout/index.tsx';
+import { useAppDispatch, useAppSelector } from '../../store/store.ts';
+import Images from '../../component/ImagesData/Images.tsx';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const SearchImage: React.FC = () => {
     const dispatch = useAppDispatch();
     const { imageCategoryData, hasMore, search, page } = useAppSelector((state: { data: ImagesSlice }) => state.data);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const query = new URLSearchParams(location.search).get('photo')
 
     useEffect(() => {
-        if (search) {
+        if (query) {
+            dispatch(setSearch(query));
             dispatch(searchData({ query: search, page: 1 }));
         }
     }, [dispatch, search]);
