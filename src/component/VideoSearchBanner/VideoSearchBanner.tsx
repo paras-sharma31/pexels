@@ -19,7 +19,7 @@ const VideoSearchBanner: React.FC = () => {
         }
     };
     return (
-        <Box position="relative" width="100%" height="80vh" overflow="hidden">
+        <Box position="relative" width="100%" height={{ base: '50vh', xl: '80vh' }} overflow="hidden">
             <Box
                 as='video'
                 src='https://static.pexels.com/lib/videos/free-videos.mp4'

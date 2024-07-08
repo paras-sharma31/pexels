@@ -28,7 +28,7 @@ export const SearchBanner: React.FC = () => {
     }
 
     return (
-        <Box className='banner-img' objectFit={'cover'} backgroundPosition={'center'} width='100%' height='80vh' display='flex' justifyContent='center' alignItems='center'>
+        <Box className='banner-img' objectFit={'cover'} backgroundPosition={'center'} width='100%' height={{ base: '50vh', xl: '80vh' }} display='flex' justifyContent='center' alignItems='center'>
             <VStack>
                 <Container maxW='container.sm' color='white'>
                     <Text fontSize='33px' color='white' fontWeight={600} >

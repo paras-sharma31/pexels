@@ -42,7 +42,7 @@ const VideoCard = ({ videoSrc, downloadImage }) => {
                                         textTransform='capitalize'
                                     >
                                         {videoSrc[item].width}p
-                                        <Button onClick={() => downloadImage(videoSrc[item], `video.mp4`)}>
+                                        <Button onClick={() => downloadImage(videoSrc[item].link, `video.mp4`)}>
                                             <MdOutlineFileDownload />
                                         </Button>
                                     </Text>)

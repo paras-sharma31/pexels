@@ -35,9 +35,9 @@ const Images: React.FC<ImagesProps> = ({ openImageModal, fetchMoreData, download
                             <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" size="md" />
                         </div>
                     }
-                    style={{ padding: '3rem  1.5rem' }}
-                    scrollThreshold={0.9}
+                    style={{ padding: '3rem  0.5rem' }}
 
+                    scrollThreshold={0.9}
                 >
                     <ResponsiveMasonry
                         columnsCountBreakPoints={{ 350: 2, 750: 3, 900: 3 }}
