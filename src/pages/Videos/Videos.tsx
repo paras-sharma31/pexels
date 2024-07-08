@@ -48,7 +48,7 @@ const Videos: React.FC = () => {
         <Layout>
             <VideoSearchBanner />
             <Container>
-                <Heading textAlign="center" fontSize="50px" p="20px" my="20px">
+                <Heading textAlign="center" fontSize="50px" p={{ base: '0', xl: '20px' }} my="20px">
                     Free Stock Videos
                 </Heading>
             </Container>

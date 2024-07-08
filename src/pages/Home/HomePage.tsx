@@ -46,7 +46,7 @@ const HomePage: React.FC = () => {
         <Layout>
             <SearchBanner />
             <Container>
-                <Heading textAlign="center" fontSize="50px" p="20px" my="20px">
+                <Heading textAlign="center" fontSize="50px" p={{ base: '0', xl: '20px' }} my="20px">
                     Free Stock Photos
                 </Heading>
             </Container>

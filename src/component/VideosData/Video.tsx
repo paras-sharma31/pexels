@@ -46,7 +46,7 @@ const Video: React.FC<VideoProps> = ({ video = [], hasMore, handleLoadMore, cate
                     </div>
                 }
                 // 3rem  1.5rem'
-                style={{ padding: '3rem  1.5rem' }}
+                style={{ padding: '3rem  0.5rem' }}
                 scrollThreshold={0.9}
             >
 
